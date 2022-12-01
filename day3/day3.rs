@@ -13,17 +13,9 @@ fn koh_lanta(mut equipe_jaune: Vec<&str>, most: bool) -> &str {
           .into_iter()
           .filter(|value| {
               if ones >= slice_len / 2 {
-                  if most {
-                      value.as_bytes()[i] == b'1'
-                  } else {
-                      value.as_bytes()[i] == b'0'
-                  }
+                  value.as_bytes()[i] == b'0' + most as u8
               } else {
-                  if most {
-                      value.as_bytes()[i] == b'0'
-                  } else {
-                      value.as_bytes()[i] == b'1'
-                  }
+                  value.as_bytes()[i] == b'1' - most as u8
               }
            })
           .collect();
