@@ -15,7 +15,7 @@ fn main() {
        }
        sums.push(current);
        read += 1;
-       if read >= contents.len() { break ; }
+       if read >= contents.lines().count() { break ; }
    }
    let mut last: usize = usize::MAX;
    let mut increased: usize = 0;
