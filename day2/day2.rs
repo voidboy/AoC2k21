@@ -4,12 +4,14 @@ use std::fs;
 struct Position {
     horizontal: usize,
     depth: usize,
+    aim: usize,
 }
 
 fn main() {
     let mut submarine_position = Position {
         horizontal: 0,
         depth: 0,
+        aim: 0,
     };
     let contents = fs::read_to_string("input")
         .expect("Cannot read the file");
@@ -23,12 +25,13 @@ fn main() {
        match direction {
            "forward" => {
                submarine_position.horizontal += n;
+               submarine_position.depth += submarine_position.aim * n;
            }
            "up" => {
-               submarine_position.depth -= n;
+               submarine_position.aim -= n;
            }
            "down" => {
-               submarine_position.depth += n;
+               submarine_position.aim += n;
            }
            _ => { panic!("wtf did you put in your input"); }
        }
